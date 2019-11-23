@@ -1,5 +1,5 @@
 # ETL_project
-roposal Plan
+Proposal Plan
 
 1. Data Source = AirBnb Data for Seattle - Reviews CSV and Listings CSV
 2. Create dataset with the most popular Seattle neighborhood rentals based on review score and frequency of repeat visitors. 
