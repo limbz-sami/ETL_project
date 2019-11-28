@@ -1,7 +1,7 @@
 # ETL_project
 Proposal Plan
 
-1. Data Source = AirBnb Data for Seattle - Reviews CSV and Listings CSV (kaggle)
+1. Data Source = AirBnb Data for Seattle - Reviews CSV and Listings CSV (http://insideairbnb.com/get-the-data.html)
 
 2. Create dataset with the most popular Seattle neighborhood rentals based on review score and frequency of repeat visitors. 
 	A. Are people who give a "10" rating score more likely to stay again?  
