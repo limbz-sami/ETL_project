@@ -1,0 +1,104 @@
+E:
+Data source = CSVs from Airbnb
+
+Transform:
+To transform the 9 months of airbnb data for 2019, we used Pandas to create dataframes and aggregate columns for each month.
+
+
+Load-
+1. Load AirBnb CSV datafile created in Pandas for the 2019 Months into a SQL DB - 'ETL Project' and create table 'airbnb_seattle'. Storing this data into relational database SQL table will allow the user to query and join on other tables with relevant data for analysis.
+
+CREATE TABLE airbnb_seattle1 (
+id INT PRIMARY KEY,
+name VARCHAR,
+neighbourhood_group VARCHAR,
+neighbourhood VARCHAR,
+room_type VARCHAR,
+p1 NUMERIC,
+p2 NUMERIC,
+p3 NUMERIC,
+p4 NUMERIC,
+p5 NUMERIC,
+p6 NUMERIC,
+p7 NUMERIC,
+p8 NUMERIC,
+min_nights1 NUMERIC,
+min_nights2 NUMERIC,
+min_nights3 NUMERIC,
+min_nights4 NUMERIC,
+min_nights5 NUMERIC,
+min_nights6 NUMERIC,
+min_nights7 NUMERIC,
+min_nights8 NUMERIC,
+reviews_no_1 NUMERIC,
+reviews_no_2 NUMERIC,
+reviews_no_3 NUMERIC,
+reviews_no_4 NUMERIC,
+reviews_no_5 NUMERIC,
+reviews_no_6 NUMERIC,
+reviews_no_7 NUMERIC,
+reviews_no_8 NUMERIC,
+reviews_month1 NUMERIC,
+reviews_month2 NUMERIC,
+reviews_month3 NUMERIC,
+reviews_month4 NUMERIC,
+reviews_month5 NUMERIC,
+reviews_month6 NUMERIC,
+reviews_month7 NUMERIC,
+reviews_month8 NUMERIC,
+listings_count1 NUMERIC,
+listings_count2 NUMERIC,
+listings_count3 NUMERIC,
+listings_count4 NUMERIC,
+listings_count5 NUMERIC,
+listings_count6 NUMERIC,
+listings_count7 NUMERIC,
+listings_count8 NUMERIC)
+
+
+
+2. Create a SQL table in the 'ETL Project' Database titled 'airbnb_calendar' and load the calendar csv data. This data contains the vacancy and price information for property listings in 2019. 
+CREATE TABLE airbnb_calendar1 (
+listing_id INT,
+date VARCHAR,
+available VARCHAR,
+price NUMERIC,
+minimum_nights NUMERIC,
+maximum_nights NUMERIC);
+
+
+
+Analysis:
+With both airbnb tables saved into SQL, the user can join tables on listing ID.
+
+1.Neighborhood has the most listings (Broadway)
+SELECT count(neighbourhood), neighbourhood
+FROM airbnb_seattle1 
+GROUP BY neighbourhood
+ORDER BY count(neighbourhood) DESC
+
+
+2. Which neighborhood has the most availabiilty in 2019 (Wallingford)/ least availabiilty in 2019 (Highland Park)
+
+SELECT 
+	c.available, 
+	count(c.available),
+	s.neighbourhood
+-- 	AVG(p1)
+FROM airbnb_calendar c
+JOIN airbnb_seattle1 s
+ON c.listing_id = s.id
+WHERE available = 't' 
+GROUP BY s.neighbourhood, c.available
+ORDER BY count(c.available) DESC
+
+
+
+3. Average price per night/neighborhood.
+
+SELECT neighbourhood, AVG(price)
+FROM airbnb_seattle1 s
+JOIN airbnb_calendar1 c
+ON c.listing_id = s.id
+GROUP BY neighbourhood
+ORDER BY AVG(price) DESC
