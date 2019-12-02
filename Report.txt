@@ -1,3 +1,4 @@
+=======
 Airbnb -Seattle (2019)
 
 Extract:
@@ -21,4 +22,5 @@ We wanted to examine how price changes with room-type. We grouped the data by ro
 
 Statistical analysis of price and location:
 We wanted to determine if the prices of the top ten expensive locations were statistically different. So we used one-way anova on the prices of the locations which showed that there was a significant difference in prices between expensive locations with p-value 4.36-39.
+
 
