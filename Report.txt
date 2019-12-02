@@ -1,0 +1,24 @@
+Airbnb -Seattle (2019)
+
+Extract:
+Airbnb data of Seattle was collected from inside Airbnb website(insideairbnb.com). Data was available from January-September 2019 in 9 different CSV formats. All the CSV files were downloaded and saved in Resources folder. Each CSV file was read and saved as dataframes using Pandas in Jupyter-notebook. 
+
+Transform:
+To transform the 9 months of airbnb data for 2019, we used Pandas to create dataframes and aggregate columns for each month. The transformation process:
+After creating dataframes of each CSV files, we dropped all the columns that were not necessary for the data analysis part. In order to have easier join of dataframes, we renamed columns of each dataframe. We used Join function to merge all dataframes sequencially. After each join we dropped repetitive columns from dataframes. We gathered all the information we needed in a single dataframe and saved the final dataframe as CSV file in Resources folder. 
+
+Data Analysis:
+
+Price vs review-count: 
+We wanted to investigate effects of reviews-count on price of locations. We realized that reviews_per_month in each dataframe contained updated data of the year so we used the last months reviews data for the analysis. Mean price of the year was determine for each Airbnb id and saved in a separate column (mean_price). We used scatter-plot to display relationship between reviews-per-month and Airbnb price. The plot revealed that airbnb price decreases as reviews increases which seem unusual. One possible reason for the inverse relationship could be properties receiving high number of negative reviews. Hign number of negative reviews may lower the price. However, it is unclear at the point because we do not know the kind of reviews (-ve or +ve) all the properties are receiving. 
+
+Price vs location:
+We also wanted to figure out the most expensive locations in Seattle. Therefore, we grouped the data by location(neighbourhood_group) and arranged the data in decending order of mean_price. We used the top ten data based on price and used bar-graph to show top ten location based on price. The price ranged from $234 -$131. Seattle downtown was the most expensive location of them all. 
+
+Price vs room_type:
+We wanted to examine how price changes with room-type. We grouped the data by room-type and used bar-graph to show the price by room-type. As expected, entire-home/apt are expensive than the other room types. Entire-home costs about 2 times as much as private-room and 3 times as much as shared-room. 
+
+
+Statistical analysis of price and location:
+We wanted to determine if the prices of the top ten expensive locations were statistically different. So we used one-way anova on the prices of the locations which showed that there was a significant difference in prices between expensive locations with p-value 4.36-39.
+
